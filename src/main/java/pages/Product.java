@@ -65,4 +65,23 @@ public class Product {
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
 
     }
+
+
+
+    //        SelenideElement frame = Selenide.$(
+//                By.xpath("//iframe[contains(@name,'aswift') and contains(@style,'visibility: visible')]"));
+//        if (frame.exists() && frame.isDisplayed()) {
+//            Selenide.switchTo().frame(frame);
+//            SelenideElement button = Selenide.$(By.id("dismiss-button"));
+//            // some Ads have that button in the first frame
+//            if (button.isDisplayed() && button.isEnabled()) {
+//                button.click();
+//            } else {
+//                // can check the second frame as well
+//                Selenide.switchTo().frame(Selenide.$(By.id("ad_iframe")));
+//                Selenide.$(By.id("dismiss-button")).click();
+//                Selenide.switchTo().defaultContent();
+//            }
+//        }
+
 }

@@ -10,7 +10,7 @@ public class TestContext {
     @Getter private PageManager pageManager;
     @Getter @Setter String testStep;
 
-    public TestContext(){
+    public TestContext() throws InterruptedException {
         appSession = new AppSession(TestProps.BROWSER, TestProps.BASE_URL);
         appSession.setDefaultTimeout(15);
         pageManager = new PageManager(appSession);
