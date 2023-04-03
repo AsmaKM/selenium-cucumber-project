@@ -50,5 +50,10 @@ public class CheckoutSteps {
         // Retrieve the files under download folder
         // Get files with name Invoice
         // Confirm there is one that was downloaded no later than 2 mins ago
+        // This is finally working!
+        // 1. Commit
+        // 2. Push to remote
+        // 3. Pull request
+        // 4. Merge
     }
 }
