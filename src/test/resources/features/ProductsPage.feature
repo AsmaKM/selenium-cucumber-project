@@ -2,9 +2,9 @@ Feature: Purchase Test
   Scenario: Place an order and download the Invoice with Login Account
     Given I go to Login page
     When I try to login with username:"asmaqac@gmail.com" and password: "qaconsultants"
-    And I am logged in
+    Then I am logged in
     And I go to the Products Page
-    And I close the ad pop up window
+    And I close the pop up ad
     Then I can see the Products page
     And I can search "tshirts"
     And I can add two tshirts to cart
