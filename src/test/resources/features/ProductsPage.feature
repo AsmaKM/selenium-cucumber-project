@@ -19,7 +19,3 @@ Feature: Purchase Test
 
 
 
-
-
-
-

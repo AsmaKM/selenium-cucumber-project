@@ -13,6 +13,7 @@ public class PageManager {
     private Product product;
     private Cart cart;
     private Checkout checkout;
+    private Contact contact;
     private Ad ad;
     public PageManager(AppSession appSession){
         this.appSession = appSession;
@@ -48,8 +49,13 @@ public class PageManager {
 
     }
 
+
+    public Contact getContact(){
+        return (contact == null) ? contact = new Contact(appSession) : contact;
+
     public Ad getAd(){
         return (ad == null) ? ad = new Ad(appSession) : ad;
+
 
     }
 }
