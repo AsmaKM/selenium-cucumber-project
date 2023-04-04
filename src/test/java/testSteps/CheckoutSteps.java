@@ -9,6 +9,11 @@ import pages.Home;
 import pages.Product;
 import properties.TestContext;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class CheckoutSteps {
@@ -45,15 +50,32 @@ public class CheckoutSteps {
 
     }
 
+
     @Then("the invoice is downloaded")
-    public void theInvoiceIsDownloaded() {
-        // Retrieve the files under download folder
-        // Get files with name Invoice
-        // Confirm there is one that was downloaded no later than 2 mins ago
+    public void theInvoiceIsDownloaded() throws InterruptedException {
+
+
+
+            // Create object of SimpleDateFormat class and decide the format
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
+        Date date1=new Date();
+        Date date=new Date();
+
+        int mm= date.getMinutes();
+        date.setMinutes(mm+1);
+
+
+
+        assertTrue(checkout.theInvoiceExists("C:\\Users\\afawzia\\Downloads", date, date1, "invoice"),"The invoice is not downloaded.");
+
+
+
         // This is finally working!
         // 1. Commit
         // 2. Push to remote
         // 3. Pull request
         // 4. Merge
     }
+
+
 }

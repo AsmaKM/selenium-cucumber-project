@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import java.io.File;
+import java.util.Date;
 
 public class Checkout {
 
@@ -110,5 +112,26 @@ public class Checkout {
         //Download Invoice
         driver.findElement(DOWNLOAD_INVOICE_BUTTON).click();
     }
+    public boolean theInvoiceExists(String downloadPath, Date date, Date date1, String filename) throws InterruptedException {
+        Thread.sleep(5000);
 
+        // Retrieve the files under download folder
+
+
+
+        File dir = new File(downloadPath);
+        File[] listOfFiles = dir.listFiles();
+
+        for (int i = 0; i < listOfFiles.length; i++) {
+            if (listOfFiles[i].isFile()) {
+                // Get files with name Invoice
+                // Confirm there is one that was downloaded no later than 1 min ago
+                if(listOfFiles[i].lastModified() > date1.getTime() && listOfFiles[i].lastModified() < date.getTime() && listOfFiles[i].getName().contains(filename)){
+                    //doSomething();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

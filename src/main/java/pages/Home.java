@@ -28,6 +28,7 @@ public class Home{
     public void go() throws InterruptedException {
         //Go to homepage
         driver.get(appSession.getBaseUrl());
+        
         //If we need to use ad Blocker
         // Switch the window after installing ad blocker
 
@@ -35,8 +36,6 @@ public class Home{
 //        driver.switchTo().window(tabs2.get(1));
 //        driver.close();
 //        driver.switchTo().window(tabs2.get(0));
-//
-
 
 
 

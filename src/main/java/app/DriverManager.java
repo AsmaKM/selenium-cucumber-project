@@ -18,7 +18,7 @@ public class DriverManager {
 
     private WebDriver driver;
 
-    public DriverManager(String browserName){
+    public DriverManager(String browserName) throws InterruptedException {
         this.driver = createDriver(browserName);
     }
 
@@ -32,7 +32,7 @@ public class DriverManager {
      * @param browserName
      * @return WebDriver
      */
-    private WebDriver createDriver(String browserName) {
+    private WebDriver createDriver(String browserName) throws InterruptedException {
         WebDriver webDriver = null;
         switch (browserName.toLowerCase()) {
             case "chrome":
@@ -54,7 +54,7 @@ public class DriverManager {
         return webDriver;
     }
 
-    public WebDriver getChromeDriver() {
+    public WebDriver getChromeDriver() throws InterruptedException {
         final ChromeOptions chromeOptions = new ChromeOptions();
 
         // Arguments: https://peter.sh/experiments/chromium-command-line-switches/
@@ -63,6 +63,7 @@ public class DriverManager {
         chromeOptions.addArguments("--remote-allow-origins=*");
         //Ad Blocker
         //chromeOptions.addExtensions(new File("C:\\Users\\afawzia\\Documents\\GitHub\\java-selenium-cucumber-template\\src\\main\\java\\app\\addBlocker\\gighmmpiobklfepjocnamgkkbiglidom-5.4.1-Crx4Chrome.com.crx"));
+        Thread.sleep(3000);
 
         //
         //Preferences: https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc
