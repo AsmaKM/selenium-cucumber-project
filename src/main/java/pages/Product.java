@@ -43,11 +43,12 @@ public class Product {
     }
 
 
-    public void enterProductToSearch(String productName) {
-    WebElement searchElement= driver.findElement(SEARCH_BUTTON);
-    searchElement.clear();
-    searchElement.sendKeys(productName);
-    driver.findElement(SUBMIT_SEARCH_BUTTON).click();
+    public void enterProductToSearch(String productName) throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement searchElement= driver.findElement(SEARCH_BUTTON);
+        searchElement.clear();
+        searchElement.sendKeys(productName);
+        driver.findElement(SUBMIT_SEARCH_BUTTON).click();
 
     }
 

@@ -62,7 +62,7 @@ public class DriverManager {
         // chromeOptions.addArguments("start-maximized");
         chromeOptions.addArguments("--remote-allow-origins=*");
         //Ad Blocker
-        chromeOptions.addExtensions(new File("C:\\Users\\afawzia\\Documents\\GitHub\\java-selenium-cucumber-template\\src\\main\\java\\app\\addBlocker\\gighmmpiobklfepjocnamgkkbiglidom-5.4.1-Crx4Chrome.com.crx"));
+        //chromeOptions.addExtensions(new File("C:\\Users\\afawzia\\Documents\\GitHub\\java-selenium-cucumber-template\\src\\main\\java\\app\\addBlocker\\gighmmpiobklfepjocnamgkkbiglidom-5.4.1-Crx4Chrome.com.crx"));
 
         //
         //Preferences: https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc

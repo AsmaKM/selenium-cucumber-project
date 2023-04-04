@@ -2,6 +2,7 @@ package testSteps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import pages.Ad;
 import pages.Home;
 import pages.Product;
 import properties.TestContext;
@@ -13,7 +14,6 @@ public class ProductSteps {
 
     private Product product;
     private Home home;
-
     public ProductSteps(TestContext textContext){
         product = textContext.getPageManager().getProduct();
     }
@@ -35,7 +35,7 @@ public class ProductSteps {
 
 
     @And("I can search {string}")
-    public void iCanSearch(String productName) {
+    public void iCanSearch(String productName) throws InterruptedException {
     product.enterProductToSearch(productName);
     }
 
@@ -47,4 +47,6 @@ public class ProductSteps {
 
 
     }
+
+
 }

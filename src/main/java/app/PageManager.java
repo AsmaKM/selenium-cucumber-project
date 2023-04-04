@@ -13,6 +13,7 @@ public class PageManager {
     private Product product;
     private Cart cart;
     private Checkout checkout;
+    private Ad ad;
     public PageManager(AppSession appSession){
         this.appSession = appSession;
     }
@@ -44,6 +45,11 @@ public class PageManager {
 
     public Checkout getCheckout(){
         return (checkout == null) ? checkout = new Checkout(appSession) : checkout;
+
+    }
+
+    public Ad getAd(){
+        return (ad == null) ? ad = new Ad(appSession) : ad;
 
     }
 }
