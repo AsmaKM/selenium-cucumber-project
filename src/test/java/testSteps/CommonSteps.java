@@ -28,10 +28,10 @@ public class CommonSteps{
 //        System.out.print("Starting Scenario: " + scenario.getName());
     }
 
-//    @After
-//    public void after(Scenario scenario) {
-//        testContext.getAppSession().getDriverManager().quitDriver();
-//    }
+    @After
+    public void after(Scenario scenario) {
+        testContext.getAppSession().getDriverManager().quitDriver();
+    }
 
     @AfterAll
     public static void afterAll(){
