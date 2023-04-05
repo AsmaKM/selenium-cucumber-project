@@ -34,19 +34,16 @@ public class ProductSteps {
     }
 
 
-    @And("I can search {string}")
-    public void iCanSearch(String productName) throws InterruptedException {
-    product.enterProductToSearch(productName);
-    }
-
-
-    @And("I can add two tshirts to cart")
-    public void iCanAddTwoTshirtsToCart() throws InterruptedException {
+    @And("I can search {string} and add two to cart")
+    public void iCanSearchAndAddTwoToCart(String productName) throws InterruptedException {
+        product.enterProductToSearch(productName);
         //Add 2 tshirts
         product.addTshirtsToCart();
-
-
+        //
     }
+
+
+
 
 
 }
