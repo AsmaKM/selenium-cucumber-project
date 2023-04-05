@@ -18,13 +18,11 @@ public class CartSteps {
     }
 
 
-    @And("I can go to Cart")
-    public void iCanGoToCart() {
-        cart.goToCart();
-    }
-
     @Then("I can see all the Products I added")
     public void iCanSeeAllTheProductsIAdded() {
+        //I can go to cart
+        cart.goToCart();
+        //see all the products that's added
         cart.userCanSeeAddedProducts();
             assertTrue(cart.userCanSeeAddedProducts(),"User can not see the added products.");
 

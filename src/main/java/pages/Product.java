@@ -10,6 +10,7 @@ public class Product {
     WebDriver driver;
     AppSession appSession;
 
+
     private final By PRODUCT_BUTTON = By.cssSelector("a[href='/products']");
 
     private final By ALLPRODUCTS_BUTTON= By.cssSelector("h2[class]");

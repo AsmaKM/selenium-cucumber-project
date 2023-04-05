@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 import java.io.File;
 import java.util.Date;
 
@@ -13,6 +15,7 @@ public class Checkout {
     WebDriver driver;
     AppSession appSession;
 
+    //@FindBy(className = "btn btn-default check_out") private WebElement proceedToCheckoutButton;
     private final By PROCEED_TO_CHECKOUT_BUTTON = By.cssSelector("a[class='btn btn-default check_out']");
 
     private final By TOTAL_AMOUNT_TEXT = By.cssSelector("td[colspan='2'] b");
@@ -37,8 +40,8 @@ public class Checkout {
 
     public void goToCheckoutPage(){
         // Click Proceed to checkout
+        //driver.findElement(PROCEED_TO_CHECKOUT_BUTTON).click();
         driver.findElement(PROCEED_TO_CHECKOUT_BUTTON).click();
-
     }
     public boolean userOnCheckOutPage(){
         try{
@@ -52,6 +55,7 @@ public class Checkout {
 
 
     public void UserCanProceedToPlaceOrder() {
+
         driver.findElement(PLACE_ORDER_BUTTON).click();
     }
     public boolean UserOnPaymentPage() {
