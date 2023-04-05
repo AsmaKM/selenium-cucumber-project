@@ -50,13 +50,15 @@ public class PageManager {
     }
 
 
-    public Contact getContact(){
+    public Contact getContact() {
         return (contact == null) ? contact = new Contact(appSession) : contact;
-
-    public Ad getAd(){
-        return (ad == null) ? ad = new Ad(appSession) : ad;
-
-
     }
+
+    public Ad getAd() {
+        return (ad == null) ? ad = new Ad(appSession) : ad;
+    }
+
+
 }
+
 

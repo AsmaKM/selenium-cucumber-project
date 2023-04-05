@@ -21,25 +21,20 @@ public class CheckoutSteps {
     private Home home;
     private Checkout checkout;
 
-    public CheckoutSteps(TestContext textContext){ checkout=textContext.getPageManager().getCheckout();}
+   public CheckoutSteps(TestContext textContext){ checkout=textContext.getPageManager().getCheckout();}
 
-    @And("I can go to checkout page")
-    public void iCanGoToCheckoutPage() {
+    @And("I can place an order with NameOnCard: {string}, CardNumber:{int}, CVC: {int}, ExpiryMonth: {int} and ExpiryYear: {int}")
+    public void iCanPlaceAnOrderWithNameOnCardCardNumberCVCExpiryMonthAndExpiryYear(String nameOnCard, int cardNumber, int cvc, int expiryMonth, int expiryYear) {
         //Click Proceed to Checkout and confirm it's the checkout Page
         checkout.goToCheckoutPage();
         assertTrue(checkout.userOnCheckOutPage(), "User is not on Checkout Page");
 
-    }
-
-    @And("I can proceed to place order")
-    public void iCanProceedToPlaceOrder() {
+        //I can proceed to place an order
         checkout.UserCanProceedToPlaceOrder();
         assertTrue(checkout.UserOnPaymentPage(),"User can not proceed to Payment Page.");
 
-    }
 
-    @And("I can place an order with NameOnCard: {string}, CardNumber:{int}, CVC: {int}, ExpiryMonth: {int} and ExpiryYear: {int}")
-    public void iCanPlaceAnOrderWithNameOnCardCardNumberCVCExpiryMonthAndExpiryYear(String nameOnCard, int cardNumber, int cvc, int expiryMonth, int expiryYear) {
+        //pay and confirm order
         checkout.attemptToPayAndConfirmOrder(nameOnCard, cardNumber, cvc, expiryMonth, expiryYear);
         assertTrue(checkout.confirmPlacedOrder(),"The order was not placed Successfully.");
     }
@@ -69,12 +64,6 @@ public class CheckoutSteps {
         assertTrue(checkout.theInvoiceExists("C:\\Users\\afawzia\\Downloads", date, date1, "invoice"),"The invoice is not downloaded.");
 
 
-
-        // This is finally working!
-        // 1. Commit
-        // 2. Push to remote
-        // 3. Pull request
-        // 4. Merge
     }
 
 

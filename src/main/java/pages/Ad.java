@@ -22,26 +22,25 @@ public class Ad {
         Thread.sleep(2000);
 
 
-        if(driver.findElement(AD_FRAME).isDisplayed()) {
+        if (driver.findElement(AD_FRAME).isDisplayed()) {
             //if there's an iframe then switch to it
             driver.switchTo().frame(driver.findElement(AD_FRAME));
-            if(driver.findElement(SECOND_AD_FRAME).isDisplayed()) {
-                //If there's a second frame then switch to it and
-                //click the close button
-               driver.switchTo().frame(driver.findElement(SECOND_AD_FRAME));
-               driver.findElement(AD_CLOSE_BUTTON).click();
-               driver.switchTo().defaultContent();
+            if (driver.findElements(AD_CLOSE_BUTTON).size()>0 && driver.findElement(AD_CLOSE_BUTTON).isEnabled()){
+                    // if there's only one iframe then just click the close button
+            driver.findElement(AD_CLOSE_BUTTON).click();
+            driver.switchTo().defaultContent();
 
 
             } else {
-                // if there's only one iframe then just click the close button
+
+
+           // {
+                //If there's a second frame then switch to it and
+                //click the close button
+                driver.switchTo().frame(driver.findElement(SECOND_AD_FRAME));
                 driver.findElement(AD_CLOSE_BUTTON).click();
                 driver.switchTo().defaultContent();
             }
         }
-
-
-
-
-
     }
+}
