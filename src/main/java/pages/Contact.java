@@ -8,13 +8,13 @@ import org.openqa.selenium.WebElement;
 public class Contact {
     WebDriver driver;
     AppSession appSession;
-    private final By CONTACT_US_BUTTON = By.cssSelector("a[href='/contact_us']");
-    private final By CONTACT_US_SUBMIT_BUTTON = By.cssSelector("input[name='submit']");
-    private final By CONTACT_NAME_INPUT = By.cssSelector("input[name='name']");
-    private final By CONTACT_EMAIL_INPUT = By.cssSelector("input[name='email']");
-    private final By CONTACT_SUBJECT_INPUT = By.cssSelector("input[name='subject']");
-    private final By CONTACT_MESSAGE_INPUT = By.cssSelector("textarea[id='message']");
-    private final By CONTACT_FORM_SUBMISSION_MESSAGE = By.cssSelector("div[class='status alert alert-success']");
+    private final By CONTACT_US_BUTTON = By.xpath("//ul//a[text()=' Contact us']");
+    private final By CONTACT_US_SUBMIT_BUTTON = By.xpath("//div//input[@type='submit']");
+    private final By CONTACT_NAME_INPUT = By.xpath("//div//input[@data-qa='name']");
+    private final By CONTACT_EMAIL_INPUT = By.xpath("//div//input[@data-qa='email']");
+    private final By CONTACT_SUBJECT_INPUT = By.xpath("//div//input[@data-qa='subject']");
+    private final By CONTACT_MESSAGE_INPUT = By.xpath("//div//textarea[@data-qa='message']");
+    private final By CONTACT_FORM_SUBMISSION_MESSAGE = By.xpath("//div[@class='contact-form']//div[text()='Success! Your details have been submitted successfully.']");
 
     public Contact(AppSession appSession){
         driver = appSession.getDriverManager().getDriver();
@@ -42,11 +42,7 @@ public class Contact {
     }
 
     public boolean formSubmitted() {
-        try {
-            driver.findElement(CONTACT_FORM_SUBMISSION_MESSAGE);
-        } catch (NoSuchElementException e){
-            return false;
-        }
+        driver.findElement(CONTACT_FORM_SUBMISSION_MESSAGE).isDisplayed();
         return true;
 
     }

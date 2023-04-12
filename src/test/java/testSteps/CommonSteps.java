@@ -4,13 +4,16 @@ import io.cucumber.java.*;
 import io.cucumber.plugin.event.PickleStepTestStep;
 import io.cucumber.plugin.event.TestCase;
 import properties.TestContext;
-
+import utils.LoggerLoad;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 
 public class CommonSteps{
+
 
     private int currentStepDefIndex = 0; // Required for getStepName.
     TestContext testContext;
@@ -21,26 +24,37 @@ public class CommonSteps{
 
     @BeforeAll
     public static void beforeAll(){
+        String excDateTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+        LoggerLoad.logger.info("--------------------------------");
+        LoggerLoad.logger.info(String.format("STARTING EXECUTION: %s",excDateTime));
+        LoggerLoad.logger.info("-------------------------------------------------------");
     }
 
     @Before
     public void before(Scenario scenario){
-//        System.out.print("Starting Scenario: " + scenario.getName());
+        LoggerLoad.logger.info("Starting Scenario: " + scenario.getName());
+
     }
 
-//    @After
-//    public void after(Scenario scenario) {
-//        testContext.getAppSession().getDriverManager().quitDriver();
-//    }
+    @After
+    public void after(Scenario scenario) {
+        LoggerLoad.logger.info("Ending Scenario: "+ scenario.getName());
+        testContext.getAppSession().getDriverManager().quitDriver();
+    }
 
     @AfterAll
     public static void afterAll(){
+        String execDateTime = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss").format(new Date());
+        LoggerLoad.logger.info("-------------------------------------------------------");
+        LoggerLoad.logger.info(String.format("EXECUTION ENDED: %s",execDateTime));
+        LoggerLoad.logger.info("-------------------------------------------------------");
     }
 
     @BeforeStep
     public void beforeStep(Scenario scenario){
         String stepName = getStepName(scenario) ; // getStepName(scenario) must be called only once.
         testContext.setTestStep(stepName);        // testStep can be retrieved on any other step by doing testContext.getTestStep()
+        LoggerLoad.logger.trace("Test Step: "+ testContext.getTestStep());
     }
 
     private String getStepName(Scenario scenario){

@@ -2,12 +2,10 @@ package testSteps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
-import pages.Ad;
 import pages.Home;
 import pages.Product;
 import properties.TestContext;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static utils.AssertAndLog.assertTrueAndLog;
 
 
 public class ProductSteps {
@@ -28,18 +26,15 @@ public class ProductSteps {
     public void iCanSeeTheProductsPage() {
         //'ALL Products' is Displayed
         product.userOnProductsPage();
-        assertTrue(product.userOnProductsPage(),"User is not on Products Page");
-
-
+        assertTrueAndLog(product.userOnProductsPage(),"User is not on Products Page");
     }
 
 
     @And("I can search {string} and add two to cart")
-    public void iCanSearchAndAddTwoToCart(String productName) throws InterruptedException {
+    public void iCanSearchAndAddTwoToCart(String productName){
         product.enterProductToSearch(productName);
         //Add 2 tshirts
         product.addTshirtsToCart();
-        //
     }
 
 

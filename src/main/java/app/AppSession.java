@@ -10,6 +10,7 @@ public class AppSession {
     @Getter private String baseUrl;
     @Getter private DriverManager driverManager;
 
+
     public AppSession(String browserName, String baseUrl) throws InterruptedException {
         driverManager = new DriverManager(browserName);
         this.baseUrl = baseUrl;

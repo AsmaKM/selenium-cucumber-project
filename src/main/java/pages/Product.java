@@ -2,29 +2,22 @@ package pages;
 
 import app.AppSession;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class Product {
     WebDriver driver;
     AppSession appSession;
-
-
-    private final By PRODUCT_BUTTON = By.cssSelector("a[href='/products']");
-
-    private final By ALLPRODUCTS_BUTTON= By.cssSelector("h2[class]");
-
-    private final By SEARCH_BUTTON= By.cssSelector("input[id='search_product']");
-
-    private final By SUBMIT_SEARCH_BUTTON= By.cssSelector("button[id='submit_search']");
-
-    private final By TSHIRT1_ADD_BUTTON= By.cssSelector("a[data-product-id='2']");
-
-    private final By TSHIRT2_ADD_BUTTON= By.cssSelector("a[data-product-id='43']");
-
-    private final By CONTINUE_SHOPPING_BUTTON= By.cssSelector("button[class='btn btn-success close-modal btn-block']");
-
+    private final By PRODUCT_BUTTON= By.xpath("//div[@class='shop-menu pull-right'] //a[@href='/products']");
+    private final By ALL_PRODUCTS_TEXT = By.xpath("//h2[text()='All Products']");
+    private final By SEARCH_INPUT = By.xpath("//div[@class='container'] //input[@id='search_product']");
+    private final By SUBMIT_SEARCH_BUTTON= By.xpath("//div[@class='container'] //button[@id='submit_search']");
+    private final By TSHIRT1_ADD_BUTTON= By.xpath("//div[@class='productinfo text-center'] //a[@data-product-id='2']");
+    private final By TSHIRT2_ADD_BUTTON= By.xpath("//div[@class='productinfo text-center'] //a[@data-product-id='43']");
+    private final By CONTINUE_SHOPPING_BUTTON= By.xpath("//div//button[text()='Continue Shopping']");
     public Product(AppSession appSession){
         driver = appSession.getDriverManager().getDriver();
     }
@@ -32,58 +25,32 @@ public class Product {
     public void goToProductsPage(){
         // Click Products
         driver.findElement(PRODUCT_BUTTON).click();
-
     }
     public boolean userOnProductsPage(){
-        try{
-            driver.findElement(ALLPRODUCTS_BUTTON);
-        } catch (NoSuchElementException e){
-            return false;
-        }
-        return true;
+            driver.findElement(ALL_PRODUCTS_TEXT).isDisplayed();
+            return true;
     }
 
 
-    public void enterProductToSearch(String productName) throws InterruptedException {
-        Thread.sleep(2000);
-        WebElement searchElement= driver.findElement(SEARCH_BUTTON);
+    public void enterProductToSearch(String productName){
+        WebElement searchElement= driver.findElement(SEARCH_INPUT);
         searchElement.clear();
         searchElement.sendKeys(productName);
         driver.findElement(SUBMIT_SEARCH_BUTTON).click();
-
     }
 
-    public void addTshirtsToCart() throws InterruptedException {
+    public void addTshirtsToCart(){
         //add 1st t-shirt
         driver.findElement(TSHIRT1_ADD_BUTTON).click();
-        Thread.sleep(3000);
-        //click Continue Shopping
+        //explicit wait--- wait until the continue shopping button is clickable
+        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(CONTINUE_SHOPPING_BUTTON)));
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
         //Add 2nd t-shirt
         driver.findElement(TSHIRT2_ADD_BUTTON).click();
-        Thread.sleep(3000);
-
         //click Continue Shopping
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(CONTINUE_SHOPPING_BUTTON)));
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
 
     }
-
-
-
-    //        SelenideElement frame = Selenide.$(
-//                By.xpath("//iframe[contains(@name,'aswift') and contains(@style,'visibility: visible')]"));
-//        if (frame.exists() && frame.isDisplayed()) {
-//            Selenide.switchTo().frame(frame);
-//            SelenideElement button = Selenide.$(By.id("dismiss-button"));
-//            // some Ads have that button in the first frame
-//            if (button.isDisplayed() && button.isEnabled()) {
-//                button.click();
-//            } else {
-//                // can check the second frame as well
-//                Selenide.switchTo().frame(Selenide.$(By.id("ad_iframe")));
-//                Selenide.$(By.id("dismiss-button")).click();
-//                Selenide.switchTo().defaultContent();
-//            }
-//        }
-
 }

@@ -12,6 +12,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.io.File;
+import java.time.Duration;
 import java.util.HashMap;
 
 public class DriverManager {
@@ -51,6 +52,7 @@ public class DriverManager {
                 throw new IllegalArgumentException(String.format("Browser:%s not supported. Please choose from: [chrome, edge, firefox or safari]",browserName));
         }
         webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         return webDriver;
     }
 
@@ -63,7 +65,7 @@ public class DriverManager {
         chromeOptions.addArguments("--remote-allow-origins=*");
         //Ad Blocker
         //chromeOptions.addExtensions(new File("C:\\Users\\afawzia\\Documents\\GitHub\\java-selenium-cucumber-template\\src\\main\\java\\app\\addBlocker\\gighmmpiobklfepjocnamgkkbiglidom-5.4.1-Crx4Chrome.com.crx"));
-        Thread.sleep(3000);
+        //Thread.sleep(3000);
 
         //
         //Preferences: https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc
@@ -97,6 +99,8 @@ public class DriverManager {
     private WebDriver getFirefoxDriver(){
         final FirefoxOptions firefoxOptions = new FirefoxOptions();
         final FirefoxProfile firefoxProfile = new FirefoxProfile();
+//        HashMap<String, Object> firefoxPrefs = new HashMap<>();
+//        firefoxProfile.setPreference("prefs",firefoxPrefs);
 
         //Arguments:
 //        firefoxOptions.addArguments("--private");

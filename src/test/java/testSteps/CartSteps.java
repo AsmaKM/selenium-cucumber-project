@@ -6,7 +6,8 @@ import pages.Home;
 import pages.Cart;
 import properties.TestContext;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static utils.AssertAndLog.assertTrueAndLog;
+
 public class CartSteps {
 
     private Cart cart;
@@ -24,7 +25,7 @@ public class CartSteps {
         cart.goToCart();
         //see all the products that's added
         cart.userCanSeeAddedProducts();
-            assertTrue(cart.userCanSeeAddedProducts(),"User can not see the added products.");
+        assertTrueAndLog(cart.userCanSeeAddedProducts(),"User can not see the added products.");
 
         }
 

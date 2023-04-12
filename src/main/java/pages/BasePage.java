@@ -3,9 +3,7 @@ import app.AppSession;
 import org.openqa.selenium.By;
 
 public class BasePage extends Page {
-
     private final By LOGIN_BUTTON = By.cssSelector("a[title='Login']");
-
     public BasePage(AppSession appSession) {
         super(appSession);
     }

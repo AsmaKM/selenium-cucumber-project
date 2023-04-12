@@ -1,8 +1,6 @@
 package testSteps;
 
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pages.BasePage;
 import pages.Home;
 import pages.Login;
@@ -10,7 +8,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import properties.TestContext;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static utils.AssertAndLog.assertTrueAndLog;
 
 public class LoginSteps {
 
@@ -31,10 +29,10 @@ public class LoginSteps {
         home.clickLoginButton();
     }
 
-    @When("I try to login with username:{string} and password: {string}")
-    public void iTryToLoginWithUsernameAndPassword(String username, String password) {
+    @When("I try to login with valid credentials")
+    public void iTryToLoginWithValidCredentials() {
         // Enter username and password in input fields
-        login.attemptToLogin(username, password);
+        login.attemptToLoginWithValidCredentials();
 
     }
 
@@ -42,14 +40,14 @@ public class LoginSteps {
     public void iAmLoggedIn() {
         // Username is displayed
         home.userLoggedIn();
-        assertTrue(home.userLoggedIn(),"User is not logged in");
+        assertTrueAndLog(home.userLoggedIn(),"User is not logged in");
 
     }
 
     @When("I try to login with wrong username:{string} and password: {string}")
     public void iTryToLoginWithWrongUsernameAndPassword(String username, String password) {
         // Enter username and password in input fields
-        login.attemptToUnsuccessfulLogin(username, password);
+        login.attemptToLoginWithWrongCredentials(username,password);
 
     }
 
@@ -57,27 +55,11 @@ public class LoginSteps {
     public void iAmNotLoggedIn() {
         // Wrong Username or Password message is displayed
         home.userNotLoggedIn();
-        assertTrue(home.userNotLoggedIn(), "User's Email or Password is incorrect!");
+        assertTrueAndLog(home.userNotLoggedIn(), "User's Email or Password is incorrect!");
 
     }
 
-    //    @When("I enter email:{string} and password:{string}")
-//    public void iEnterEmailAndPassword(String username, String password) {
-//        login.attemptToLogin(username, password);
-//    }
-//
-//    @Then("{string} message is displayed")
-//    public void messageIsDisplayed(String errorMessage) {
-//        assertEquals(errorMessage, login.getErrorMessage());
-//    }
 
 
-       // iFrame
-//    WebElement frame1= driver.findElement(By.id("ad_position_box"));
-//        driver.switchTo().frame(frame1);
-//    WebElement frame2= driver.findElement(By.id("ad_iframe"));
-//        driver.switchTo().frame(frame2);
-//        driver.findElement(By.cssSelector("div[id='dismiss-button']")).click();
-//        driver.switchTo().defaultContent();
-//        Thread.sleep(5000);
+
 }

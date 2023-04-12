@@ -1,20 +1,16 @@
 package testSteps;
 
 import io.cucumber.java.en.And;
-
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.Checkout;
 import pages.Home;
-import pages.Product;
 import properties.TestContext;
 
-import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static utils.AssertAndLog.assertTrueAndLog;
 
 public class CheckoutSteps {
 
@@ -23,46 +19,45 @@ public class CheckoutSteps {
 
    public CheckoutSteps(TestContext textContext){ checkout=textContext.getPageManager().getCheckout();}
 
-    @And("I can place an order with NameOnCard: {string}, CardNumber:{int}, CVC: {int}, ExpiryMonth: {int} and ExpiryYear: {int}")
-    public void iCanPlaceAnOrderWithNameOnCardCardNumberCVCExpiryMonthAndExpiryYear(String nameOnCard, int cardNumber, int cvc, int expiryMonth, int expiryYear) {
+    @And("I can place an order with card information")
+    public void iCanPlaceAnOrderWithCardInformation() {
         //Click Proceed to Checkout and confirm it's the checkout Page
         checkout.goToCheckoutPage();
-        assertTrue(checkout.userOnCheckOutPage(), "User is not on Checkout Page");
+        assertTrueAndLog(checkout.userOnCheckOutPage(), "User is not on Checkout Page");
 
         //I can proceed to place an order
         checkout.UserCanProceedToPlaceOrder();
-        assertTrue(checkout.UserOnPaymentPage(),"User can not proceed to Payment Page.");
+        assertTrueAndLog(checkout.UserOnPaymentPage(),"User can not proceed to Payment Page.");
 
 
         //pay and confirm order
-        checkout.attemptToPayAndConfirmOrder(nameOnCard, cardNumber, cvc, expiryMonth, expiryYear);
-        assertTrue(checkout.confirmPlacedOrder(),"The order was not placed Successfully.");
+        checkout.attemptToPayAndConfirmOrder();
+        assertTrueAndLog(checkout.confirmPlacedOrder(),"The order was not placed Successfully.");
     }
 
     @Then("I click the download invoice button")
-    public void iCanDownloadTheInvoice() {
+    public void iCanDownloadTheInvoice() throws InterruptedException {
         checkout.downloadTheInvoice();
 
     }
 
 
     @Then("the invoice is downloaded")
-    public void theInvoiceIsDownloaded() throws InterruptedException {
+    public void theInvoiceIsDownloaded() throws IOException {
+        //wait until the invoice is downloaded
 
-
-
-            // Create object of SimpleDateFormat class and decide the format
+       // Create object of SimpleDateFormat class and decide the format
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
-        Date date1=new Date();
-        Date date=new Date();
+        Date start_date=new Date();
+        Date end_date=new Date();
+        int secs = start_date.getSeconds();
+        start_date.setSeconds(secs - 30);
+        int mm= end_date.getMinutes();
+        end_date.setMinutes(mm+1);
 
-        int mm= date.getMinutes();
-        date.setMinutes(mm+1);
 
-
-
-        assertTrue(checkout.theInvoiceExists("C:\\Users\\afawzia\\Downloads", date, date1, "invoice"),"The invoice is not downloaded.");
-
+        //validate the downloaded invoice
+            assertTrueAndLog(checkout.theInvoiceExists("C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice"), "The invoice is not downloaded.");
 
     }
 
