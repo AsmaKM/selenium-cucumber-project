@@ -1,10 +1,10 @@
-# Cucumber-Selenium Test Automation Framework Template
-This is a complete BDD automation framework template for web functional testing using Java, Cucumber and Selenium.
-It is based on the Page Object model, and it provides all the required pieces to start creating page classes and tests cases.
+## Project- Cucumber-Selenium Test Automation Framework
+Main purpose of the project is to test- loging in to a website and placing an order.
+This project was made using the complete BDD automation framework template for web functional testing using Java, Cucumber and Selenium.
+The template was based on the Page Object model, and it provided all the required pieces to start creating page classes and tests cases.
+This project was written using IntelliJ IDEA Community Edition.
 
-Even though I intended to make this template as complete as possible, it is susceptible to improvements and modifications 
-based on your experience and requirements. I just wanted to share an approach that has worked for me on several projects. 
-I hope you find it helpful.
+
 
 ## Requirements
 - Java JDK (11+)
@@ -41,8 +41,7 @@ driver files. Modify the `DriverManager` with any other suggested approach from 
 
 **In test:**
 
-6. Define `test.properties` as required. For each property defined, make sure it is retrieved by `properties.TestProps` 
-class either as mandatory or with a default value. By doing this, properties can be accessed easily from anywhere in the code.
+6. Define `test.properties` as required. To test on firefox and/or edge, change the browser on `test.properties`. For each property defined, make sure it is retrieved by `properties.TestProps` class either as mandatory or with a default value. By doing this, properties can be accessed easily from anywhere in the code.
 **Note: test.properties is usually not shared in a repository since it might contain sensitive information like credentials**
 7. Configure `properties.TestContext` to initialize `AppSession`, `PageManager` and to set session properties. `TestContext` is 
 used to share properties across test steps using dependency injection, specifically [cucumber-picocontainer](https://cucumber.io/docs/cucumber/state/?lang=java#picocontainer) for this 
