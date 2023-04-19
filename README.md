@@ -34,30 +34,30 @@ in `test` calls web automation functionalities existing in `main`.
 
 **In main:**
 
-2. Create page classes under `pages`. Make new pages classes to extend `Page` class, which contains commonly used methods 
+1. Create page classes under `pages`. Make new pages classes to extend `Page` class, which contains commonly used methods 
 to interact with a web page using Selenium. Page classes must receive `AppSession` as an argument in the constructor, which 
 contains the properties for the current session and the `DriverManager`.Then, add the element locators and methods 
 for that page. Take `pages.Home` as an example. 
-3. Add new page classes to the constructor of `app.PageManager` class. Take the existing examples as a reference.
-4. Add any other property that needs to be passed to the page classes in the `app.AppSession` class. This template 
+2. Add new page classes to the constructor of `app.PageManager` class. Take the existing examples as a reference.
+3. Add any other property that needs to be passed to the page classes in the `app.AppSession` class. This template 
 has already some predefined. 
-5. Customize the creation of the web drivers in `app.DriverManager`. Add arguments and preferences as required. 
+4. Customize the creation of the web drivers in `app.DriverManager`. Add arguments and preferences as required. 
 **Note: the DriverManager is using the [Selenium Manager(Beta)](https://www.selenium.dev/documentation/webdriver/getting_started/install_drivers/#1-selenium-manager-beta) approach to create the driver, which doesn't require the
 driver files. Modify the `DriverManager` with any other suggested approach from Selenium if required.**
 
 **In test:**
 
-6. Define `test.properties` as required. To test on firefox and/or edge, change the browser on `test.properties`. For each property defined, make sure it is retrieved by `properties.TestProps` class either as mandatory or with a default value. By doing this, properties can be accessed easily from anywhere in the code.
+5. Define `test.properties` as required. To test on firefox and/or edge, change the browser on `test.properties`. For each property defined, make sure it is retrieved by `properties.TestProps` class either as mandatory or with a default value. By doing this, properties can be accessed easily from anywhere in the code.
 **Note: test.properties is usually not shared in a repository since it might contain sensitive information like credentials**
-7. Configure `properties.TestContext` to initialize `AppSession`, `PageManager` and to set session properties. `TestContext` is 
+6. Configure `properties.TestContext` to initialize `AppSession`, `PageManager` and to set session properties. `TestContext` is 
 used to share properties across test steps using dependency injection, specifically [cucumber-picocontainer](https://cucumber.io/docs/cucumber/state/?lang=java#picocontainer) for this 
 framework. 
-8. Create a [test steps](https://cucumber.io/docs/cucumber/step-definitions/?lang=java) file under `testSteps`. 
+7. Create a [test steps](https://cucumber.io/docs/cucumber/step-definitions/?lang=java) file under `testSteps`. 
 `@Before` and `@After` steps are included in the `testSteps.CommonSteps` class. For all the test steps file, make sure 
 `TestContext testContext` is defined as a parameter in the constructor, this way the properties and objects in TestContext 
 are accessible from any test step in the file. Take `testSteps.LoginSteps` as an example.
-9. Create [feature files](https://cucumber.io/docs/gherkin/reference/#steps) using existing test steps.
-10. Execute tests typing `mvn test` in the terminal.
+8. Create [feature files](https://cucumber.io/docs/gherkin/reference/#steps) using existing test steps.
+9. Execute tests typing `mvn test` in the terminal.
 
 ## Test properties
 Test properties, like the app URL, credentials, etc., can be retrieved from several places using the following order of precedence:
