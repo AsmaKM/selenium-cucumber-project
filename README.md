@@ -69,10 +69,6 @@ Test properties, like the app URL, credentials, etc., can be retrieved from seve
 repository since it might contain sensitive information like credentials**
 
 
-## Parallel testing
-This framework supports parallel test execution using the Cucumber JUnit Platform Engine settings.
-To enable parallel execution, set the cucumber.execution.parallel.enabled configuration parameter to true in junit-platform.properties.
-**Be cautious when executing tests in parallel since it consumes a lot of memory. Refer to the [documentation](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine#parallel-execution) to do the proper configuration**
 
 ## Other notes
 - Features are run in alphabetical order of the .feature file name
