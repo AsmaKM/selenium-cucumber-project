@@ -315,6 +315,8 @@ public class Page {
      *
      * @param elementToExistLocator locator statement of type By of the element
      */
+
+    //Salvador
     private void customWaitForElementToExist(By elementToExistLocator) {
         int MAX_TRY_TIME_IN_MILLS = 2000;
         int WAIT_TIME_TO_TRY_AGAIN_IN_MILLS = 10;

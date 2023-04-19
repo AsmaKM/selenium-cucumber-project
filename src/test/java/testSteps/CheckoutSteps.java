@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.Checkout;
 import pages.Home;
+import pages.Ad;
 import properties.TestContext;
 
 import java.io.IOException;
@@ -16,13 +17,14 @@ public class CheckoutSteps {
 
     private Home home;
     private Checkout checkout;
-
+    private Ad ad;
    public CheckoutSteps(TestContext textContext){ checkout=textContext.getPageManager().getCheckout();}
 
     @And("I can place an order with card information")
-    public void iCanPlaceAnOrderWithCardInformation() {
+    public void iCanPlaceAnOrderWithCardInformation() throws InterruptedException {
         //Click Proceed to Checkout and confirm it's the checkout Page
         checkout.goToCheckoutPage();
+        //if there's an ad
         assertTrueAndLog(checkout.userOnCheckOutPage(), "User is not on Checkout Page");
 
         //I can proceed to place an order
@@ -45,8 +47,7 @@ public class CheckoutSteps {
     @Then("the invoice is downloaded")
     public void theInvoiceIsDownloaded() throws IOException {
         //wait until the invoice is downloaded
-
-       // Create object of SimpleDateFormat class and decide the format
+        // Create object of SimpleDateFormat class and decide the format
         DateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:mm");
         Date start_date=new Date();
         Date end_date=new Date();
@@ -55,7 +56,8 @@ public class CheckoutSteps {
         int mm= end_date.getMinutes();
         end_date.setMinutes(mm+1);
 
-
+        checkout.waitForFileToDownload(20000, "C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice");
+//        assertTrueAndLog(checkout.waitForFileToDownload(20000, "C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice" ),"The file was not downloaded.");
         //validate the downloaded invoice
             assertTrueAndLog(checkout.theInvoiceExists("C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice"), "The invoice is not downloaded.");
 

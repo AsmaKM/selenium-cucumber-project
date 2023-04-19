@@ -11,8 +11,8 @@ import java.util.NoSuchElementException;
 public class Login{
     WebDriver driver;
     AppSession appSession;
-    String username="asmaqac@gmail.com";
-    String password="qaconsultants";
+    String username="tryout123123@email.com";
+    String password="password";
 
 
     private final By USERNAME_INPUT = By.xpath("//form[@action='/login'] //input[@type='email']");

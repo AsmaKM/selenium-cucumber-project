@@ -1,7 +1,6 @@
 package testSteps;
 
 import io.cucumber.java.en.Given;
-import pages.BasePage;
 import pages.Home;
 import pages.Login;
 import io.cucumber.java.en.Then;
@@ -12,12 +11,11 @@ import static utils.AssertAndLog.assertTrueAndLog;
 
 public class LoginSteps {
 
-    private BasePage basePage;
     private Login login;
     private Home home;
 
     public LoginSteps(TestContext testContext){
-        basePage = testContext.getPageManager().getBasePage();
+       // basePage = testContext.getPageManager().getBasePage();
         login = testContext.getPageManager().getLogin();
         home = testContext.getPageManager().getHome();
     }
