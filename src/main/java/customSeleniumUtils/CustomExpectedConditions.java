@@ -1,5 +1,6 @@
 package customSeleniumUtils;
 
+import pages.Checkout;
 import utils.AppUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Point;
@@ -8,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class CustomExpectedConditions {
 
@@ -127,5 +129,17 @@ public class CustomExpectedConditions {
 
         };
 
+
+    }
+    public static ExpectedCondition<Boolean> fileIsInDownloads(String downloadPath, Date end_date, Date start_date, String fileName){
+        return new ExpectedCondition<Boolean>() {
+            @Override
+            public Boolean apply(WebDriver driver) {
+                return Checkout.theInvoiceExists(downloadPath, end_date, start_date,fileName);
+            }
+            public String toString() {
+                return String.format("file with name: %s in Download directory",fileName);
+            }
+        };
     }
 }

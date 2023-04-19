@@ -11,13 +11,13 @@ import java.time.Duration;
 public class Product {
     WebDriver driver;
     AppSession appSession;
-    private final By PRODUCT_BUTTON= By.xpath("//div[@class='shop-menu pull-right'] //a[@href='/products']");
+    private final By PRODUCT_BUTTON= By.xpath("//a[@href='/products']");
     private final By ALL_PRODUCTS_TEXT = By.xpath("//h2[text()='All Products']");
-    private final By SEARCH_INPUT = By.xpath("//div[@class='container'] //input[@id='search_product']");
-    private final By SUBMIT_SEARCH_BUTTON= By.xpath("//div[@class='container'] //button[@id='submit_search']");
-    private final By TSHIRT1_ADD_BUTTON= By.xpath("//div[@class='productinfo text-center'] //a[@data-product-id='2']");
-    private final By TSHIRT2_ADD_BUTTON= By.xpath("//div[@class='productinfo text-center'] //a[@data-product-id='43']");
-    private final By CONTINUE_SHOPPING_BUTTON= By.xpath("//div//button[text()='Continue Shopping']");
+    private final By SEARCH_INPUT = By.xpath("//input[@id='search_product' and @type='text' ]");
+    private final By SUBMIT_SEARCH_BUTTON= By.xpath("//button[@id='submit_search' and @type='button']");
+    private final By TSHIRT1_ADD_BUTTON= By.xpath("//a[@data-product-id='2' and text()='Add to cart']");
+    private final By TSHIRT2_ADD_BUTTON= By.xpath("//a[@data-product-id='43' and text()='Add to cart']");
+    private final By CONTINUE_SHOPPING_BUTTON= By.xpath("//button[text()='Continue Shopping']");
     public Product(AppSession appSession){
         driver = appSession.getDriverManager().getDriver();
     }
@@ -43,7 +43,7 @@ public class Product {
         //add 1st t-shirt
         driver.findElement(TSHIRT1_ADD_BUTTON).click();
         //explicit wait--- wait until the continue shopping button is clickable
-        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(5));
+        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(3));
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(CONTINUE_SHOPPING_BUTTON)));
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
         //Add 2nd t-shirt

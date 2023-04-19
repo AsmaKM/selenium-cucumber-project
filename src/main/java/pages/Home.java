@@ -9,7 +9,7 @@ public class Home{
     AppSession appSession;
     WebDriver driver;
     private final By LOGIN_BUTTON = By.xpath("//a[@href='/login']");
-    private final By LOGOUT_BUTTON= By.xpath("//div[@class='shop-menu pull-right']//a[@href='/logout']");
+    private final By LOGOUT_BUTTON= By.xpath("//a[@href='/logout']");
     private final By MESSAGE_BUTTON= By.xpath("//p[text()='Your email or password is incorrect!']");
 
 
@@ -49,4 +49,5 @@ public class Home{
         driver.findElement(MESSAGE_BUTTON).isDisplayed();
         return true;
     }
+
 }
