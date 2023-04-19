@@ -1,10 +1,14 @@
 ## Project- Cucumber-Selenium Test Automation Framework
+
 Main purpose of the project is to test- loging in to a website and placing an order.
 This project was made using the complete BDD automation framework template for web functional testing using Java, Cucumber and Selenium.
 The template was based on the Page Object model, and it provided all the required pieces to start creating page classes and tests cases.
 This project was written using IntelliJ IDEA Community Edition.
 
 
+## Execution methods:
+Test execution is triggered by "mvn test" command in a terminal from the project directory. 
+  - `mvn test`: takes test properties values from test.properties file
 
 ## Requirements
 - Java JDK (11+)
@@ -23,8 +27,10 @@ and helper classes and methods.
 - `test` contains the test properties management, test steps and feature files for the test execution. Basically, code 
 in `test` calls web automation functionalities existing in `main`.
 
-## Usage
-1. Clone the repository. 
+
+
+
+
 
 **In main:**
 
@@ -62,12 +68,6 @@ Test properties, like the app URL, credentials, etc., can be retrieved from seve
 `test.properties` file is located at root directory by default. **Note: test.properties is usually not shared in a 
 repository since it might contain sensitive information like credentials**
 
-## Execution methods:
-Test execution is triggered by "mvn test" command in a terminal from the project directory. 
-  - `mvn test`: takes test properties values from test.properties file
-  - `mvn test -DtestPropertyKey=<testPropertyValue>`: Overwrites values from test.properties
-  - `mvn test -DexcludedGroups="properties" -Dgroups="login | navigation"`: executes tests with -Dgroups tags and 
-excludes the ones in -DexcludedGroups. Refer to [Cucumber-Junit tags filtering](https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-junit-platform-engine#tags)
 
 ## Parallel testing
 This framework supports parallel test execution using the Cucumber JUnit Platform Engine settings.
