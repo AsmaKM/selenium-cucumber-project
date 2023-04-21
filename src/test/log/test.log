@@ -1016,3 +1016,31 @@
 2023-04-20 10:59:54.945 INFO  test - EXECUTION ENDED: 20-Apr.-2023 10:59:54
 2023-04-20 10:59:54.945 INFO  test - -------------------------------------------------------
 2023-04-20 10:59:54.945 INFO  test - -------------------------------------------------------
+2023-04-21 02:00:06.751 INFO  test - --------------------------------
+2023-04-21 02:00:06.751 INFO  test - --------------------------------
+2023-04-21 02:00:06.796 INFO  test - STARTING EXECUTION: 2023-04-21 02:00:05
+2023-04-21 02:00:06.796 INFO  test - STARTING EXECUTION: 2023-04-21 02:00:05
+2023-04-21 02:00:06.796 INFO  test - -------------------------------------------------------
+2023-04-21 02:00:06.796 INFO  test - -------------------------------------------------------
+2023-04-21 02:00:13.730 INFO  test - Starting Scenario: Fill Up the contact form and submit it
+2023-04-21 02:00:13.730 INFO  test - Starting Scenario: Fill Up the contact form and submit it
+2023-04-21 02:00:24.523 INFO  test - Ending Scenario: Fill Up the contact form and submit it
+2023-04-21 02:00:24.523 INFO  test - Ending Scenario: Fill Up the contact form and submit it
+2023-04-21 02:00:30.430 INFO  test - Starting Scenario: Successful Login
+2023-04-21 02:00:30.430 INFO  test - Starting Scenario: Successful Login
+2023-04-21 02:00:38.376 INFO  test - Ending Scenario: Successful Login
+2023-04-21 02:00:38.376 INFO  test - Ending Scenario: Successful Login
+2023-04-21 02:00:48.247 INFO  test - Starting Scenario: UnSuccessful Login
+2023-04-21 02:00:48.247 INFO  test - Starting Scenario: UnSuccessful Login
+2023-04-21 02:00:56.281 INFO  test - Ending Scenario: UnSuccessful Login
+2023-04-21 02:00:56.281 INFO  test - Ending Scenario: UnSuccessful Login
+2023-04-21 02:01:00.948 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-21 02:01:00.948 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-21 02:01:31.113 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-21 02:01:31.113 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-21 02:01:32.506 INFO  test - -------------------------------------------------------
+2023-04-21 02:01:32.506 INFO  test - -------------------------------------------------------
+2023-04-21 02:01:32.506 INFO  test - EXECUTION ENDED: 21-Apr.-2023 02:01:32
+2023-04-21 02:01:32.506 INFO  test - EXECUTION ENDED: 21-Apr.-2023 02:01:32
+2023-04-21 02:01:32.506 INFO  test - -------------------------------------------------------
+2023-04-21 02:01:32.506 INFO  test - -------------------------------------------------------
