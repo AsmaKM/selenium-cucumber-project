@@ -15,8 +15,9 @@ public class Product {
     private final By ALL_PRODUCTS_TEXT = By.xpath("//h2[text()='All Products']");
     private final By SEARCH_INPUT = By.xpath("//input[@id='search_product' and @type='text' ]");
     private final By SUBMIT_SEARCH_BUTTON= By.xpath("//button[@id='submit_search' and @type='button']");
-    private final By TSHIRT1_ADD_BUTTON= By.xpath("//a[@data-product-id='2' and text()='Add to cart']");
-    private final By TSHIRT2_ADD_BUTTON= By.xpath("//a[@data-product-id='43' and text()='Add to cart']");
+    private final By TSHIRT1_ADD_BUTTON= By.xpath("//div[1]/div[1]/a[1][@data-product-id='2']");
+    private final By TSHIRT2_ADD_BUTTON= By.xpath("//div[1]/div[1]/a[1][@data-product-id='43']");
+//    private final By TSHIRT2_ADD_BUTTON= By.xpath("//a[@data-product-id='43' and text()='Add to cart']");
     private final By CONTINUE_SHOPPING_BUTTON= By.xpath("//button[text()='Continue Shopping']");
     public Product(AppSession appSession){
         driver = appSession.getDriverManager().getDriver();
@@ -43,7 +44,7 @@ public class Product {
         //add 1st t-shirt
         driver.findElement(TSHIRT1_ADD_BUTTON).click();
         //explicit wait--- wait until the continue shopping button is clickable
-        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(3));
+        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(2));
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(CONTINUE_SHOPPING_BUTTON)));
         driver.findElement(CONTINUE_SHOPPING_BUTTON).click();
         //Add 2nd t-shirt
