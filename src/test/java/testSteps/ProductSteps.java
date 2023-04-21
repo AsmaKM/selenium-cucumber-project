@@ -16,6 +16,7 @@ public class ProductSteps {
     private Ad ad;
     public ProductSteps(TestContext textContext){
         product = textContext.getPageManager().getProduct();
+        ad = textContext.getPageManager().getAd();
     }
 
     @And("I go to the Products Page")

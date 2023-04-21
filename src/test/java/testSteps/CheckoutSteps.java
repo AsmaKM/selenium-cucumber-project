@@ -17,7 +17,6 @@ public class CheckoutSteps {
 
     private Home home;
     private Checkout checkout;
-    private Ad ad;
    public CheckoutSteps(TestContext textContext){ checkout=textContext.getPageManager().getCheckout();}
 
     @And("I can place an order with card information")
