@@ -56,7 +56,7 @@ public class CheckoutSteps {
         int mm= end_date.getMinutes();
         end_date.setMinutes(mm+1);
 
-        checkout.waitForFileToDownload(20000, "C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice");
+        checkout.waitForFileToDownload(10000, "C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice");
 //        assertTrueAndLog(checkout.waitForFileToDownload(20000, "C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice" ),"The file was not downloaded.");
         //validate the downloaded invoice
             assertTrueAndLog(checkout.theInvoiceExists("C:\\Users\\afawzia\\Downloads", end_date, start_date, "invoice"), "The invoice is not downloaded.");
