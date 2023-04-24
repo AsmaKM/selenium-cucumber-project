@@ -17,17 +17,16 @@ public class ContactSteps {
     private Ad ad;
 
     public ContactSteps(TestContext textContext){
+
         contact = textContext.getPageManager().getContact();
+        ad = textContext.getPageManager().getAd();
     }
 
 
     @And("I go to Contact Us Page")
     public void iGoToContactUsPage() throws InterruptedException {
     contact.goToContactUsPage();
-    if (this.ad==null){
-        driver.switchTo().defaultContent();
-    }
-    else         ad.closePopUpAd();
+    ad.closePopUpAd();
 
     }
 
