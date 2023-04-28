@@ -1,0 +1,31 @@
+FROM ubuntu:22.04
+
+WORKDIR /app
+
+#Java
+RUN apt update && apt install -y openjdk-17-jdk
+
+# Install Chrome
+RUN apt update && apt install -y wget gnupg
+RUN wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+RUN echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
+RUN apt update && apt install -y google-chrome-stable
+
+# Copy the project files and run Maven to build the project
+COPY . /app
+RUN apt install -y maven
+RUN mvn clean package -DskipTests
+
+# Set the entrypoint to run the Selenium tests
+ENTRYPOINT ["mvn", "test"]
+
+# Create a non-root user to run the application
+RUN groupadd -r app && useradd -r -g app app
+USER app
+
+# Document which ports are exposed
+EXPOSE 8080
+
+# Add a healthcheck to verify that the application is running correctly
+HEALTHCHECK --interval=30s --timeout=10s \
+  CMD curl -f http://localhost:8080/ || exit 1

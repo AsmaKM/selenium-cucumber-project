@@ -102,7 +102,7 @@ public class Checkout {
 
     public void waitForFileToDownload(int totalTimeoutInMillis, String downloadPath,Date end_date, Date start_date, String fileName) throws IOException {
         Wait<WebDriver>wait=new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(20))
+                .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofMillis(250))
                 .ignoring(NoSuchElementException.class);
         wait.until(CustomExpectedConditions.fileIsInDownloads(downloadPath, end_date, start_date,fileName));
