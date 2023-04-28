@@ -1,18 +1,16 @@
 package pages;
 
 import app.AppSession;
-import customSeleniumUtils.CustomExpectedConditions;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.IOException;
 import java.time.Duration;
 import java.io.File;
 import java.util.Date;
+
 
 public class Checkout {
 
@@ -100,19 +98,12 @@ public class Checkout {
     }
 
 
-    public void waitForFileToDownload(int totalTimeoutInMillis, String downloadPath,Date end_date, Date start_date, String fileName) throws IOException {
-        Wait<WebDriver>wait=new FluentWait<WebDriver>(driver)
-                .withTimeout(Duration.ofSeconds(10))
-                .pollingEvery(Duration.ofMillis(250))
-                .ignoring(NoSuchElementException.class);
-        wait.until(CustomExpectedConditions.fileIsInDownloads(downloadPath, end_date, start_date,fileName));
-//            wait.until((WebDriver wd) -> fileToCheck.exists());
 
-    }
+    public boolean theInvoiceExists(String downloadPath, Date end_date, Date start_date, String filename) throws IOException {
 
-    public static boolean theInvoiceExists(String downloadPath, Date end_date, Date start_date, String filename){
-        // Retrieve the files under download folder
-        // WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(60));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@href,'download') and contains(@href,'"+filename+"')]")));
+
 
         File dir = new File(downloadPath);
         File[] listOfFiles = dir.listFiles();

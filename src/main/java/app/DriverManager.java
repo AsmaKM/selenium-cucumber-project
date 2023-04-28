@@ -76,7 +76,7 @@ public class DriverManager {
         //Preferences: https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc
         HashMap<String, Object> chromePrefs = new HashMap<>();
         // chromePrefs.put("profile.default_content_settings.popups", 0);
-        // chromePrefs.put("download.default_directory", "/new/download/path");
+        chromePrefs.put("download.default_directory", "src/test/Downloads");
         chromeOptions.setExperimentalOption("prefs", chromePrefs);
 
         ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);

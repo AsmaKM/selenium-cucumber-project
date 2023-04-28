@@ -131,15 +131,15 @@ public class CustomExpectedConditions {
 
 
     }
-    public static ExpectedCondition<Boolean> fileIsInDownloads(String downloadPath, Date end_date, Date start_date, String fileName){
-        return new ExpectedCondition<Boolean>() {
-            @Override
-            public Boolean apply(WebDriver driver) {
-                return Checkout.theInvoiceExists(downloadPath, end_date, start_date,fileName);
-            }
-            public String toString() {
-                return String.format("file with name: %s in Download directory",fileName);
-            }
-        };
-    }
+//    public static ExpectedCondition<Boolean> fileIsInDownloads(String downloadPath, Date end_date, Date start_date, String fileName){
+//        return new ExpectedCondition<Boolean>() {
+//            @Override
+//            public Boolean apply(WebDriver driver) {
+//                return Checkout.theInvoiceExists(downloadPath, end_date, start_date,fileName);
+//            }
+//            public String toString() {
+//                return String.format("file with name: %s in Download directory",fileName);
+//            }
+//        };
+//    }
 }
