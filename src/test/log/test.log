@@ -1091,4 +1091,53 @@
 2023-04-28 13:28:38.125 INFO  test - EXECUTION ENDED: 28-Apr.-2023 13:28:38
 2023-04-28 13:28:38.125 INFO  test - EXECUTION ENDED: 28-Apr.-2023 13:28:38
 2023-04-28 13:28:38.125 INFO  test - -------------------------------------------------------
-2023-04-28 13:28:38.125 INFO  test - -------------------------------------------------------
+2023-04-28 13:28:38.125 INFO  test - -------------------------------------------------------2023-04-28 16:21:06.023 INFO  test - --------------------------------
+2023-04-28 16:21:06.023 INFO  test - --------------------------------
+2023-04-28 16:21:06.097 INFO  test - STARTING EXECUTION: 2023-04-28 16:21:04
+2023-04-28 16:21:06.097 INFO  test - STARTING EXECUTION: 2023-04-28 16:21:04
+2023-04-28 16:21:06.098 INFO  test - -------------------------------------------------------
+2023-04-28 16:21:06.098 INFO  test - -------------------------------------------------------
+2023-04-28 16:21:13.246 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:21:13.246 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:21:34.561 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:21:34.561 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:21:34.729 INFO  test - -------------------------------------------------------
+2023-04-28 16:21:34.729 INFO  test - -------------------------------------------------------
+2023-04-28 16:21:34.729 INFO  test - EXECUTION ENDED: 28-Apr.-2023 16:21:34
+2023-04-28 16:21:34.729 INFO  test - EXECUTION ENDED: 28-Apr.-2023 16:21:34
+2023-04-28 16:21:34.729 INFO  test - -------------------------------------------------------
+2023-04-28 16:21:34.729 INFO  test - -------------------------------------------------------
+2023-04-28 16:34:15.206 INFO  test - --------------------------------
+2023-04-28 16:34:15.206 INFO  test - --------------------------------
+2023-04-28 16:34:15.320 INFO  test - STARTING EXECUTION: 2023-04-28 16:34:13
+2023-04-28 16:34:15.320 INFO  test - STARTING EXECUTION: 2023-04-28 16:34:13
+2023-04-28 16:34:15.320 INFO  test - -------------------------------------------------------
+2023-04-28 16:34:15.320 INFO  test - -------------------------------------------------------
+2023-04-28 16:34:23.163 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:34:23.163 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:34:46.252 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:34:46.252 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:34:46.453 INFO  test - -------------------------------------------------------
+2023-04-28 16:34:46.453 INFO  test - -------------------------------------------------------
+2023-04-28 16:34:46.453 INFO  test - EXECUTION ENDED: 28-Apr.-2023 16:34:46
+2023-04-28 16:34:46.453 INFO  test - EXECUTION ENDED: 28-Apr.-2023 16:34:46
+2023-04-28 16:34:46.454 INFO  test - -------------------------------------------------------
+2023-04-28 16:34:46.454 INFO  test - -------------------------------------------------------
+2023-04-28 16:36:58.800 INFO  test - --------------------------------
+2023-04-28 16:36:58.800 INFO  test - --------------------------------
+2023-04-28 16:36:58.885 INFO  test - STARTING EXECUTION: 2023-04-28 16:36:57
+2023-04-28 16:36:58.885 INFO  test - STARTING EXECUTION: 2023-04-28 16:36:57
+2023-04-28 16:36:58.885 INFO  test - -------------------------------------------------------
+2023-04-28 16:36:58.885 INFO  test - -------------------------------------------------------
+2023-04-28 16:37:07.023 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:37:07.023 INFO  test - Starting Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:37:26.343 ERROR test - Error during execution: org.opentest4j.AssertionFailedError: The invoice is not downloaded. ==> expected: <true> but was: <false>
+2023-04-28 16:37:26.343 ERROR test - Error during execution: org.opentest4j.AssertionFailedError: The invoice is not downloaded. ==> expected: <true> but was: <false>
+2023-04-28 16:37:26.346 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:37:26.346 INFO  test - Ending Scenario: Place an order and download the Invoice with Login Account
+2023-04-28 16:37:26.545 INFO  test - -------------------------------------------------------
+2023-04-28 16:37:26.545 INFO  test - -------------------------------------------------------
+2023-04-28 16:37:26.546 INFO  test - EXECUTION ENDED: 28-Apr.-2023 16:37:26
+2023-04-28 16:37:26.546 INFO  test - EXECUTION ENDED: 28-Apr.-2023 16:37:26
+2023-04-28 16:37:26.546 INFO  test - -------------------------------------------------------
+2023-04-28 16:37:26.546 INFO  test - -------------------------------------------------------
