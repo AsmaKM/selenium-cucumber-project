@@ -31,7 +31,7 @@ jobs:
         docker push ${{ secrets.DOCKER_USERNAME }}/selenium-training-project
 
     - name: Run tests in Docker container
-      run: docker run selenium-training-project/myimage
+      run: docker run ${{ secrets.DOCKER_USERNAME }}/selenium-training-project
 
     - name: Collect test results
       run: |
