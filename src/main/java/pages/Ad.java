@@ -19,7 +19,7 @@ public class Ad {
 
     public void closePopUpAd() throws InterruptedException {
 
-        if (driver.findElement(AD_FRAME).isDisplayed()) {
+        if (driver.findElements(AD_FRAME).size()>0 && driver.findElement(AD_FRAME).isDisplayed()) {
             //if there's an iframe then switch to it
             driver.switchTo().frame(driver.findElement(AD_FRAME));
             if (driver.findElements(AD_CLOSE_BUTTON).size()>0 && driver.findElement(AD_CLOSE_BUTTON).isEnabled()){
