@@ -27,8 +27,8 @@ jobs:
 
     - name: Push Docker image to registry
       run: |
-        docker tag myimage selenium-training-project/myimage
-        docker push selenium-training-project/myimage
+        docker tag myimage ${{ secrets.DOCKER_USERNAME }}/selenium-training-project
+        docker push ${{ secrets.DOCKER_USERNAME }}/selenium-training-project
 
     - name: Run tests in Docker container
       run: docker run selenium-training-project/myimage
