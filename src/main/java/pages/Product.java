@@ -43,8 +43,8 @@ public class Product {
     public void addTshirtsToCart(){
         //add 1st t-shirt
 
-        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(3));
-        //wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(TSHIRT1_ADD_BUTTON)));
+        WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(TSHIRT1_ADD_BUTTON)));
         driver.findElement(TSHIRT1_ADD_BUTTON).click();
         //explicit wait--- wait until the continue shopping button is clickable
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(CONTINUE_SHOPPING_BUTTON)));
