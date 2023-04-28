@@ -75,7 +75,7 @@ jobs:
           credentials_json: '${{ secrets.GCP_CREDENTIALS }}'
       - name: Activate Service Account
         run: |-
-          gcloud auth activate-service-account 724867669925-compute@developer.gserviceaccount.com --key-file=${{ secrets.GCP_CREDENTIALS }}
+          gcloud auth activate-service-account 724867669925-compute@developer.gserviceaccount.com --key-file=${{ secrets.GCP_CREDENTIALS }}    ./
           gcloud auth print-access-token | docker login -u oauth2accesstoken  --password-stdin https://northamerica-northeast2-docker.pkg.dev
       
       # - name: Google Auth
