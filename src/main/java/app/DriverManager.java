@@ -11,9 +11,9 @@ import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
-import java.io.File;
 import java.time.Duration;
 import java.util.HashMap;
+
 
 public class DriverManager {
 
@@ -58,10 +58,15 @@ public class DriverManager {
 
     public WebDriver getChromeDriver() throws InterruptedException {
         final ChromeOptions chromeOptions = new ChromeOptions();
-
         // Arguments: https://peter.sh/experiments/chromium-command-line-switches/
         // chromeOptions.addArguments("user-data-dir=/path/to/custom/profile");
-        // chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--window-size=1920,1200");
+        chromeOptions.addArguments("--ignore-certificate-errors");
+        chromeOptions.addArguments("--disable-extensions");
+        chromeOptions.addArguments("--no-sandbox");
+        chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--remote-allow-origins=*");
         //Ad Blocker
         //chromeOptions.addExtensions(new File("C:\\Users\\afawzia\\Documents\\GitHub\\java-selenium-cucumber-template\\src\\main\\java\\app\\addBlocker\\gighmmpiobklfepjocnamgkkbiglidom-5.4.1-Crx4Chrome.com.crx"));
@@ -98,7 +103,12 @@ public class DriverManager {
 
     private WebDriver getFirefoxDriver(){
         final FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments("--disable-web-security");
+        firefoxOptions.addArguments("--allow-running-insecure-content");
         final FirefoxProfile firefoxProfile = new FirefoxProfile();
+        firefoxProfile.setAcceptUntrustedCertificates(true);
+        firefoxProfile.setAssumeUntrustedCertificateIssuer(false);
+        firefoxProfile.setPreference("pageLoadStrategy", "normal");
 //        HashMap<String, Object> firefoxPrefs = new HashMap<>();
 //        firefoxProfile.setPreference("prefs",firefoxPrefs);
 
