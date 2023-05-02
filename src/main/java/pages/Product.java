@@ -40,9 +40,8 @@ public class Product {
         driver.findElement(SUBMIT_SEARCH_BUTTON).click();
     }
 
-    public void addTshirtsToCart(){
+    public void addTshirtsToCart() throws InterruptedException {
         //add 1st t-shirt
-
         WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(20));
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(TSHIRT1_ADD_BUTTON)));
         driver.findElement(TSHIRT1_ADD_BUTTON).click();

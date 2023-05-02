@@ -10,7 +10,10 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import properties.ProjectProps;
+import utils.AppUtils;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.HashMap;
 
@@ -56,30 +59,38 @@ public class DriverManager {
         return webDriver;
     }
 
-    public WebDriver getChromeDriver() throws InterruptedException {
+    public WebDriver getChromeDriver(){
+        HashMap<String, Object> chromePrefs = new HashMap<>();
+//         chromePrefs.put("profile.default_content_settings.popups", 0);
+         chromePrefs.put("browser.setDownloadBehavior", "allow");
+         String absolutePath = AppUtils.getAbsolutePath(ProjectProps.DOWNLOAD_DIR)+ "\\";
+         System.out.println(absolutePath);
+         chromePrefs.put("download.default_directory", absolutePath);
+
+
         final ChromeOptions chromeOptions = new ChromeOptions();
         // Arguments: https://peter.sh/experiments/chromium-command-line-switches/
-        // chromeOptions.addArguments("user-data-dir=/path/to/custom/profile");
-        chromeOptions.addArguments("--headless");
-        chromeOptions.addArguments("--disable-gpu");
-        chromeOptions.addArguments("--window-size=1920,1200");
-        chromeOptions.addArguments("--ignore-certificate-errors");
-        chromeOptions.addArguments("--disable-extensions");
-        chromeOptions.addArguments("--no-sandbox");
-        chromeOptions.addArguments("--disable-dev-shm-usage");
+//        // chromeOptions.addArguments("user-data-dir=/path/to/custom/profile");
+//        chromeOptions.addArguments("--headless");
+//        chromeOptions.addArguments("--disable-gpu");
+//        chromeOptions.addArguments("--window-size=1920,1200");
+//        chromeOptions.addArguments("--ignore-certificate-errors");
+//        chromeOptions.addArguments("--disable-extensions");
+//        chromeOptions.addArguments("--no-sandbox");
+//        chromeOptions.addArguments("--disable-dev-shm-usage");
         chromeOptions.addArguments("--remote-allow-origins=*");
+        chromeOptions.addArguments("start-maximized");
+        chromeOptions.addArguments("disable-infobars");
         //Ad Blocker
         //chromeOptions.addExtensions(new File("C:\\Users\\afawzia\\Documents\\GitHub\\java-selenium-cucumber-template\\src\\main\\java\\app\\addBlocker\\gighmmpiobklfepjocnamgkkbiglidom-5.4.1-Crx4Chrome.com.crx"));
         //Thread.sleep(3000);
 
-        //
-        //Preferences: https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc
-        HashMap<String, Object> chromePrefs = new HashMap<>();
-        // chromePrefs.put("profile.default_content_settings.popups", 0);
-        chromePrefs.put("download.default_directory", "src/test/Downloads");
-        chromeOptions.setExperimentalOption("prefs", chromePrefs);
 
+        //Preferences: https://chromium.googlesource.com/chromium/src/+/master/chrome/common/pref_names.cc
+        chromeOptions.setExperimentalOption("prefs", chromePrefs);
         ChromeDriver chromeDriver = new ChromeDriver(chromeOptions);
+
+
         System.out.println(String.format("Driver session: %s", chromeDriver.getSessionId()));
         return chromeDriver;
     }

@@ -4,8 +4,9 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import pages.Checkout;
 import pages.Home;
-import pages.Ad;
+import properties.ProjectProps;
 import properties.TestContext;
+import utils.AppUtils;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -56,7 +57,7 @@ public class CheckoutSteps {
         end_date.setMinutes(mm+1);
 
         //validate the downloaded invoice
-            assertTrueAndLog(checkout.theInvoiceExists("src/test/Downloads", end_date, start_date, "invoice"), "The invoice is not downloaded.");
+            assertTrueAndLog(checkout.theInvoiceExists(ProjectProps.DOWNLOAD_DIR, end_date, start_date, "invoice"), "The invoice is not downloaded.");
 
     }
 
