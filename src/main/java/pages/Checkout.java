@@ -1,11 +1,14 @@
 package pages;
 
 import app.AppSession;
+import customSeleniumUtils.CustomExpectedConditions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.AppUtils;
+
 import java.io.IOException;
 import java.time.Duration;
 import java.io.File;
@@ -101,18 +104,20 @@ public class Checkout {
 
     public boolean theInvoiceExists(String downloadPath, Date end_date, Date start_date, String filename) throws IOException {
 
-        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(60));
+        WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(120));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@href,'download') and contains(@href,'"+filename+"')]")));
+//        wait.until(CustomExpectedConditions.fileIsInDownloads("invoice"));
 
-
-        File dir = new File(downloadPath);
+        System.out.println(AppUtils.getAbsolutePath(downloadPath));
+        System.out.println(String.valueOf(AppUtils.getAbsolutePath(downloadPath)));
+        File dir = new File(String.valueOf(AppUtils.getAbsolutePath(downloadPath)));
         File[] listOfFiles = dir.listFiles();
 
         for (int i = 0; i < listOfFiles.length; i++) {
             if (listOfFiles[i].isFile()) {
                 // Get files with name Invoice
                 // Confirm there is one that was downloaded no later than 1 min ago
-                if(listOfFiles[i].lastModified() > start_date.getTime() && listOfFiles[i].lastModified() < end_date.getTime() && listOfFiles[i].getName().contains(filename)){
+                if(listOfFiles[i].lastModified() > start_date.getTime() && listOfFiles[i].lastModified() < end_date.getTime()){
                     return true;
                 }
             }

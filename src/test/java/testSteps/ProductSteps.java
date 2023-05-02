@@ -2,6 +2,7 @@ package testSteps;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import pages.Ad;
 import pages.Product;
 import properties.TestContext;
 import static utils.AssertAndLog.assertTrueAndLog;
@@ -10,8 +11,10 @@ import static utils.AssertAndLog.assertTrueAndLog;
 public class ProductSteps {
 
     private Product product;
+    private Ad ad;
     public ProductSteps(TestContext textContext){
         product = textContext.getPageManager().getProduct();
+        ad=textContext.getPageManager().getAd();
     }
 
     @And("I go to the Products Page")
@@ -29,9 +32,12 @@ public class ProductSteps {
 
 
     @And("I can search {string} and add two to cart")
-    public void iCanSearchAndAddTwoToCart(String productName){
+    public void iCanSearchAndAddTwoToCart(String productName) throws InterruptedException {
         product.enterProductToSearch(productName);
         //Add 2 tshirts
+        //if there's an ad, close it
+        ad.closePopUpAd();
+
         product.addTshirtsToCart();
     }
 
